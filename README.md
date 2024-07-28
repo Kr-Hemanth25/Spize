@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Spize Food Delivery App
+
+Spize is a modern food delivery application built with Next.js, React, and other powerful tools. The app includes robust authentication options, location-based restaurant listings, and a donation feature.
+
+## Features
+
+- **Authentication**: 
+  - JWT Token Authentication
+  - GitHub Authentication via NextAuth
+- **Location-based Services**: 
+  - Automatically fetches and displays restaurants based on the user's location.
+- **Donation Feature**: 
+  - "Buy Me a Chai" button to accept donations.
+
+## Tech Stack
+
+- **Frontend**:
+  - Next.js
+  - React
+  - Tailwind CSS
+  - Redux Toolkit
+  - React Hook Form
+- **Backend**:
+  - MongoDB
+  - JWT
+  - NextAuth
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (v14 or higher)
+- MongoDB (local or Atlas)
+- GitHub OAuth App (for NextAuth)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **JWT Authentication**: Users can sign up and log in using their email and password. A JWT token will be generated for authenticated sessions.
+- **GitHub Authentication**: Users can log in using their GitHub accounts via NextAuth.
 
-## Learn More
+### Location-based Restaurant Listings
 
-To learn more about Next.js, take a look at the following resources:
+- Upon entering the website, the app fetches the user's location and displays nearby restaurants using a geolocation API.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Donation Feature
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- The "Buy Me a Chai" button allows users to donate money to support the project.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Developed by K.R.Hemanth.
+
