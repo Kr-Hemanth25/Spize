@@ -1,77 +1,39 @@
 "use client";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
-import { useContext } from "react";
 import LoginContext from "../components/LoginContext";
-
-
 
 const Payments = () => {
   const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
   const [paymentMethod, setPaymentMethod] = useState("");
   const { data: session } = useSession();
-  const router=useRouter()
-const { mlogin } = useContext(LoginContext)
-  let payment
-  const indianBanks = [
-    "State Bank of India",
-    "HDFC Bank",
-    "Karnataka Bank",
-    "ICICI Bank",
-    "Axis Bank",
-    "Punjab National Bank",
-    "Bank of Baroda",
-    "Kotak Mahindra Bank",
-    "IndusInd Bank",
-    "Canara Bank",
-    "Union Bank of India",
-    "IDBI Bank",
-    "Bank of India",
-    "Central Bank of India",
-    "Indian Bank",
-    "Yes Bank"
-  ];
-  const test=()=>{
-   payment=useSelector((data) => data.payment);
-    // console.log("session payment",payment)
-  }
-  test();
+  const router = useRouter();
+  const { mlogin } = useContext(LoginContext);
 
-  const receipes=useSelector((data)=>data.receipes)
-  // console.log(receipes)
-  // console.log("session details",session,session?.user?.email)
+  // Correctly use useSelector at the top level
+  const payment = useSelector((state) => state.payment);
+  const receipes = useSelector((state) => state.receipes);
 
-  let freceipes=receipes.filter((item)=>{
-    if(item.receipe.info.id===payment.id){
-    //  console.log(item)
-     return item
-    }}
-  )
-  // console.log(freceipes)
+  const freceipes = receipes.filter((item) => item.receipe.info.id === payment.id);
 
   const submit = async (data) => {
-    // console.log("data going for debugger",data)
     try {
-      const r= await fetch('/api/payments', {
+      const response = await fetch('/api/payments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
-      // console.log(r)
-    
 
       reset();
-      setPaymentMethod(""); 
-      if(r.ok)
-      {
-        console.log('redirecting..')
-        router.push('/cart/payments/payment')
-
+      setPaymentMethod("");
+      if (response.ok) {
+        console.log('redirecting..');
+        router.push('/cart/payments/payment');
       }
     } catch (error) {
       console.error('Error:', error);
@@ -84,26 +46,22 @@ const { mlogin } = useContext(LoginContext)
         <h1 className="text-2xl font-bold mb-6 text-center capitalize">Payment Page</h1>
 
         <form onSubmit={handleSubmit(submit)} className="space-y-4">
-        <div className="text-xl font-bold text-gray-700 capitalize">
-        {freceipes[0]?.receipe.info.name+" from "+freceipes[0]?.receipe.text}
-      </div>
-        <div className="text-xl font-bold text-gray-700">
-        &#x20b9;{payment.price}
-      </div>
-      {/* Hidden input to register the price */}
-      <input type="hidden" value={payment.price} {...register("price")} />
-      <input type="hidden" value={freceipes[0]?.receipe.info.name} {...register("name")}/>
-      <input type="hidden" value={session?(session.user.email):mlogin?(mlogin.email):"aaa@gmail.com"} {...register("email")}/>
-      <input type="hidden" value={payment.quantity} {...register("quantity")}/>
-      <input type="hidden" value={payment.hotel} {...register("hotel")}/>
-      <input type="hidden" value={payment.desc} {...register("desc")}/>
-      <input type="hidden" value={payment.imageid} {...register("imageid")}/>
+          <div className="text-xl font-bold text-gray-700 capitalize">
+            {freceipes[0]?.receipe.info.name + " from " + freceipes[0]?.receipe.text}
+          </div>
+          <div className="text-xl font-bold text-gray-700">
+            &#x20b9;{payment.price}
+          </div>
+          {/* Hidden input to register the price */}
+          <input type="hidden" value={payment.price} {...register("price")} />
+          <input type="hidden" value={freceipes[0]?.receipe.info.name} {...register("name")} />
+          <input type="hidden" value={session ? session.user.email : mlogin ? mlogin.email : "aaa@gmail.com"} {...register("email")} />
+          <input type="hidden" value={payment.quantity} {...register("quantity")} />
+          <input type="hidden" value={payment.hotel} {...register("hotel")} />
+          <input type="hidden" value={payment.desc} {...register("desc")} />
+          <input type="hidden" value={payment.imageid} {...register("imageid")} />
+          <input type="hidden" value={freceipes[0]?.receipe.info.id} {...register("rid")} />
 
-
-
-
-
-      <input type="hidden" value={freceipes[0]?.receipe.info.id} {...register("rid")}/>
           <div>
             <label className="block text-gray-700">Address for Delivery</label>
             <textarea
@@ -269,4 +227,3 @@ const { mlogin } = useContext(LoginContext)
 };
 
 export default Payments;
-

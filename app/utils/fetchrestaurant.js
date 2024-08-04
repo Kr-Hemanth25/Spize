@@ -70,7 +70,7 @@ export const data = async () => {
 
 
 
-export const useFetchRestaurantMenuDetail = async({recievedData}) => {
+export const FetchRestaurantMenuDetail = async({recievedData}) => {
   return new Promise(async(resolve,reject)=>{
 
           try {

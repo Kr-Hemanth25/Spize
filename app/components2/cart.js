@@ -128,10 +128,12 @@ const Cart = () => {
                   </button>
                 </div>
               </div>
-              <img
+              <Image
                 className="w-full h-[35vh] sm:h-[35vh] object-cover transition-transform duration-300 transform scale-100 hover:scale-105"
                 src={`${IMG_CDN_URL}${recipe.receipe.info.imageId}`}
                 alt="Recipe Picture"
+                height={1000}
+                width={1000}
               />
             </div>
           ))}

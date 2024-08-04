@@ -36,8 +36,14 @@ export async function POST(request) {
           from: process.env.EMAIL_USER, // Sender address
           to: user.email, // List of receivers
           subject: 'Hello from Spize', // Subject line
-          text: 'This is a plain text message', // Plain text body
-          html: '<b>This is a testing Website Created BY student,So No Realistic Delivery will Be Done</b>' // HTML body
+          text: `This is a testing Website Created BY student.
+  
+  So no realistic delivery will be done.
+  
+  Thank you for signing up!
+  
+  Regards,
+  Spize Team` // Plain text body
         };
         
         // Send the email

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 // import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
-const page = () => {
+const Page = () => {
   const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
   const [exist,setexist]=useState(null)
   const router=useRouter();
@@ -112,4 +112,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

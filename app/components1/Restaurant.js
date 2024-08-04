@@ -57,7 +57,7 @@ const Restaurant = () => {
 
   if (error) return <div className='text-white text-center text-[5vh] pt-[30vh] capitalize'>Error: {error}</div>;
   if (isLoading) return <div className='text-white text-center text-[5vh] pt-[30vh] capitalize'>
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <Script src="https://cdn.lordicon.com/lordicon.js"></Script>
 <lord-icon
     src="https://cdn.lordicon.com/anqzffqz.json"
     trigger="loop"
@@ -69,7 +69,7 @@ const Restaurant = () => {
   return (
     <>
       <div className='bg-white text-center capitalize rounded-full h-[7vh] w-[45vw] mx-auto flex items-center gap-[2vh] sm:w-[15vw]'>
-      <script src="https://cdn.lordicon.com/lordicon.js"></script>
+      <Script src="https://cdn.lordicon.com/lordicon.js"></Script>
 <lord-icon className="h-[3vh] w-[4vw] justify-self-end pl-[2vw] ml-[1vw]"
     src="https://cdn.lordicon.com/fkdzyfle.json"
     trigger="in"

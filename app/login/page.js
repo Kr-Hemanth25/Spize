@@ -1,5 +1,4 @@
 'use client';
-
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -31,7 +30,7 @@ const Page = () => {
     fetchdata()
 
 
-  },[])
+  },[setMlogin])
 
 
   if (session||mlogin.isuser) {
@@ -78,7 +77,7 @@ const Page = () => {
             {...register('email', { required: 'Email is required' })}
             className="px-4 py-2 rounded-lg text-center bg-gray-800 border border-gray-600 focus:outline-none focus:border-blue-500 w-full"
           />
-          {errors.email && <span className="text-gray-200 capitalize text-sm">{errors.email.message}</span>}
+          {errors.email && <span className="text-gray-200 capitalize text-sm text-center">{errors.email.message}</span>}
         <input
           type="password"
           placeholder="Password"
@@ -100,7 +99,7 @@ const Page = () => {
         </form>
         <button onClick={()=>{signIn("github")}}
         className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-        <svg className="h-6 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/1999/xlink" viewBox="0 0 73 73" version="1.1">
+        <svg className="h-6 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73 73" version="1.1">
             <g id="team-collaboration/version-control/github" stroke="none" stroke-width="1" fill="none"
                 fill-rule="evenodd">
                 <g id="container" transform="translate(2.000000, 2.000000)" fill-rule="nonzero">
@@ -121,7 +120,7 @@ const Page = () => {
     </button>
         </div>
         <p className="text-gray-400 text-sm mt-4">
-          Don't have an account? <Link href="/signup" className="text-blue-500 hover:underline">Sign Up</Link>
+          Dont have an account? <Link href="/signup" className="text-blue-500 hover:underline">Sign Up</Link>
         </p>
     
     

@@ -29,7 +29,7 @@ const History = () => {
       }
     };
     fetchHistory();
-  }, [session]);
+  }, [session,mlogin]);
 
   return (
     <>

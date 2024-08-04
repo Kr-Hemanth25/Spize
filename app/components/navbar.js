@@ -17,6 +17,20 @@ const Navbar = () => {
   const { mlogin, setMlogin } = useContext(LoginContext)
   const router = useRouter()
 
+  useEffect(()=>{
+    async function fetchdata(){
+    let response=await fetch('/api/rauth')
+    let result= await response.json()
+    if(result.isuser)
+    {
+      setMlogin(result.user)
+    }
+    }
+    fetchdata()
+
+
+  },[setMlogin])
+
   useEffect(() => {
     // console.log(mlogin)
     const handleResize = () => {
@@ -113,7 +127,7 @@ if (session || mlogin.isuser) {
 
               <div className='justify-center items-center h-screen hidden sm:flex'>
                 <div className='h-[5vh] w-[15vw] flex flex-row items-center justify-center text-center capitalize transition-all duration-300 text-white border-white border-[0.5vh] p-[1vh] hover:text-purple-900 hover:border-purple-900 hover:bg-white hover:border-[0.3vh]'>
-                  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                  <Script src="https://cdn.lordicon.com/lordicon.js"></Script>
                   <lord-icon
                     src="https://cdn.lordicon.com/mebvgwrs.json"
                     trigger="loop"
@@ -125,21 +139,23 @@ if (session || mlogin.isuser) {
                 </div>
               </div>
             </div>
-            <div className='flex-row gap-[4vw] self-end text-[2em] h-[10vh] text-white justify-center items-center sm:flex text-center'>
-              <Link href='/home' className="h-[7vh] w-[7vw] text-center hover:bg-white pl-[0.5vw] hover:text-purple-900 hover:rounded-full focus:bg-transparent focus:rounded-[40rem] hidden sm:flex">Home</Link>
-              <Link href='/menu' className='h-[7vh] w-[7vw] text-center hover:bg-white pl-[0.5vw] hover:text-purple-900 hover:rounded-full focus:bg-transparent focus:rounded-[40rem] hidden sm:flex'>Menu</Link>
-              <Link href='/about' className='h-[7vh] w-[7vw] text-center pl-[0.5vw] hover:border-purple-900 hover:bg-white hover:border-[0.3vh] hover:text-purple-900 hover:rounded-[40rem] focus:bg-transparent focus:rounded-[40rem] hidden sm:flex'>About</Link>
-              <div className='flex-row justify-center hidden sm:flex'>
-                <script src="https://cdn.lordicon.com/lordicon.js"></script>
+            <div className='flex-row gap-[3vw] self-end text-[2em] h-[10vh] text-white justify-between items-center sm:flex text-center md:ml-[20vw]'>
+              <Link href='/home' className="h-[7vh] w-[7vw] text-center hover:bg-white px-[0.5vw] hover:text-purple-900 hover:rounded-full focus:bg-transparent focus:rounded-[40rem] hidden sm:flex">Home</Link>
+              <Link href='/menu' className='h-[7vh] w-[7vw] text-center hover:bg-white px-[0.5vw] hover:text-purple-900 hover:rounded-full focus:bg-transparent focus:rounded-[40rem] hidden sm:flex'>Menu</Link>
+              <Link href='/about' className='h-[7vh] w-[7vw] text-center hover:bg-white px-[0.5vw] hover:text-purple-900 hover:rounded-full focus:bg-transparent focus:rounded-[40rem] hidden sm:flex'>About</Link>
+              <div className='flex-row justify-center hidden sm:flex sm:place-items-center sm:gap-0'>
+                <Script src="https://cdn.lordicon.com/lordicon.js"></Script>
                 <lord-icon
-                  src="https://cdn.lordicon.com/tckirjgy.json"
+                src="https://cdn.lordicon.com/tckirjgy.json"
                   trigger="hover"
-                  colors="primary:#ffffff,secondary:#f49cc8,tertiary:#ffffff">
+                  colors="primary:#ffffff,secondary:#f49cc8,tertiary:#ffffff"
+                  style={{ height: '5vh', width: '4vw' }}
+                  >
                 </lord-icon>
-                <Link href='/buymeachai' className='text-white text-[2vh] capitalize border-white pl-[0.5vw] border-[0.1vh] p-[1vh] hover:text-purple-900 hover:border-purple-900 hover:bg-white hover:border-[0.3vh] font-mono hidden sm:flex'>buy-me-a-chai</Link>
+                <Link href='/buymeachai' className='text-white text-[2vh] sm:w-[9vw] capitalize border-white pl-[0.5vw] border-[0.1vh] p-[1vh] hover:text-purple-900 hover:border-purple-900 hover:bg-white hover:border-[0.3vh] font-mono hidden sm:flex'>buy-me-a-chai</Link>
               </div>
               <button onClick={toggleMenu} aria-expanded={click} aria-label="Toggle menu">
-                <img className="text-white h-[5vh] justify-self-end relative left-[40vw] top-[2vh] sm:left-[3vw] sm:top-0" src={click ? '/cancel.svg' : '/hamburger.svg'} alt="Menu toggle" />
+                <Image className="text-white h-[5vh] justify-self-end left-[30vw] top-[2vh] sm:left-[0vw] relative sm:top-0" src={click ? '/cancel.svg' : '/hamburger.svg'} alt="Menu toggle" height={1000} width={1000} />
               </button>
             </div>
           </div>
@@ -147,7 +163,7 @@ if (session || mlogin.isuser) {
             <div className='bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] h-[20vh] w-[100vw] sm:w-[30vh] relative left-[85vw]'>
               <ul className='flex flex-col text-white relative top-[15%] text-[1.3rem] text-center items-center gap-[2rem] capitalize'>
                 <div className='flex flex-row justify-center'>
-                  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                  <Script src="https://cdn.lordicon.com/lordicon.js"></Script>
                   <lord-icon
                     src="https://cdn.lordicon.com/ciqqqyun.json"
                     trigger="hover"
@@ -166,7 +182,7 @@ if (session || mlogin.isuser) {
             <div className='bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] h-[100vh] w-[70vw] relative left-[30vw]'>
               <ul className='flex flex-col text-white text-[1rem] text-center items-center gap-[2vh] capitalize relative top-[1vh] pt-[3vh]'>
                 <div className='h-[5vh] w-[50vw] text-white border-white border-[0.5vh] rounded-full hover:text-purple-900 hover:border-purple-900 hover:bg-white hover:border-[0.3vh] flex flex-row justify-center'>
-                  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                  <Script src="https://cdn.lordicon.com/lordicon.js"></Script>
                   <lord-icon
                     src="https://cdn.lordicon.com/mebvgwrs.json"
                     trigger="loop"
