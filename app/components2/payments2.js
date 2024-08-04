@@ -69,7 +69,8 @@ const {mlogin}=useContext(LoginContext)
       if(r.ok)
       {
         console.log('redirecting..')
-        router.push('http://localhost:3000/cart/payments/payment')
+        router.push('/cart/payments/payment')
+        
 
       }
     }
