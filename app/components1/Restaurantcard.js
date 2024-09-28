@@ -32,7 +32,7 @@ const Restaurantcard = ({ restaurant,index }) => {
   return (
     <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden w-80 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:text-white">
      <div className="relative overflow-hidden">
-      <Image src={`${IMG_CDN_URL}${restaurant.info.cloudinaryImageId}`} width="2000" height="2000" alt="Restaurant Image" className='w-full h-40 object-cover transition-transform duration-300 transform scale-110 hover:scale-105'/>
+      <Image src={`${IMG_CDN_URL}${restaurant.info.cloudinaryImageId}`} width="2000" height="2000" alt="Restaurant Image" className='w-full h-40 object-cover transition-transform duration-300 transform scale-110 hover:scale-105' priority/>
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70 transition-opacity duration-300 hover:opacity-0"></div>
     </div>
     <div className="p-4 bg-black bg-opacity-70 hover:bg-opacity-90 transition-colors duration-300">

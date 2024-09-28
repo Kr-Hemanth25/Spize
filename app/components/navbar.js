@@ -21,15 +21,17 @@ const Navbar = () => {
     async function fetchdata(){
     let response=await fetch('/api/rauth')
     let result= await response.json()
+    console.log(result)
     if(result.isuser)
     {
+      console.log(result.isuser)
       setMlogin(result.user)
     }
     }
     fetchdata()
 
 
-  },[setMlogin])
+  },[])
 
   useEffect(() => {
     // console.log(mlogin)

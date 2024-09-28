@@ -53,6 +53,7 @@ const Restaurantmenucard = ({ recipe, index }) => {
     src={`${IMG_CDN_URL}${recipe.info.imageId}`}
     height="200"
     alt={recipe.info.name}
+    priority
     className="absolute inset-0 w-full h-full object-cover opacity-[0.3] transition-opacity duration-300 hover:opacity-50"
   />
   <div className="relative z-[10] p-5">

@@ -1,56 +1,57 @@
-"use client"
-import { createSlice,current } from "@reduxjs/toolkit";
+"use client";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { nanoid } from "@reduxjs/toolkit";
-import { removeItem } from "auth-provider/CookieStore";
-// import { data } from "../utils/fetchrestaurant";
 
+const initialState = {
+  receipes: [], // Start with an empty array, then hydrate from localStorage on the client side
+  payment: {},
+  payments: [],
+};
 
-const initialState={
-    receipes:JSON.parse(localStorage.getItem("receipesdata"))||[],
-    payment:{},
-    payments:[]
-}
+const Slice = createSlice({
+  name: "addreceipes",
+  initialState,
+  reducers: {
+    hydrateReceipesFromLocalStorage: (state) => {
+      if (typeof window !== "undefined") {
+        // Check if on client side
+        const storedReceipes = JSON.parse(localStorage.getItem("receipesdata")) || [];
+        state.receipes = storedReceipes;
+      }
+    },
+    addreceipe: (state, action) => {
+      const data = {
+        nanoid: nanoid(),
+        receipe: action.payload,
+      };
+      state.receipes.push(data);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("receipesdata", JSON.stringify(current(state.receipes)));
+      }
+    },
+    removereceipe: (state, action) => {
+      const updatedReceipes = state.receipes.filter((item) => item.nanoid !== action.payload);
+      state.receipes = updatedReceipes;
+      if (typeof window !== "undefined") {
+        localStorage.setItem("receipesdata", JSON.stringify(updatedReceipes));
+      }
+    },
+    addpayment: (state, action) => {
+      state.payment = action.payload;
+    },
+    addpayments: (state, action) => {
+      state.payments = action.payload;
+      console.log("addpayments", state.payments);
+    },
+  },
+});
 
-const Slice=createSlice({
-    name:"addreceipes",
-    initialState,
-    reducers:{
-        addreceipe:(state,action)=>{
-            // console.log("action",action)
-            const data={
-                nanoid:nanoid(),
-                receipe:action.payload
-            }
-            state.receipes.push(data)
-            localStorage.setItem("receipesdata",JSON.stringify(current(state.receipes)))
-        },
-        removereceipe:(state,action)=>{
-            // console.log(state.receipes)
-            const data=state.receipes.filter((item)=>{
-               if(item.nanoid!==action.payload){
-                console.log(item)
-                return item
-               }
-            })
-            state.receipes=data
-            localStorage.setItem("receipesdata",JSON.stringify(state.receipes))
-            // console.log(data)
+export const {
+  hydrateReceipesFromLocalStorage,
+  addreceipe,
+  removereceipe,
+  addpayment,
+  addpayments,
+} = Slice.actions;
 
-        },
-        addpayment:(state,action)=>{
-            // console.log("action from addpayment",action)
-
-            state.payment=action.payload
-
-            // console.log("action from payment",state.payment)
-         },
-         addpayments:(state,action)=>{
-            state.payments=action.payload
-            console.log('addpayments',state.payments)
-
-         }
-    }
-})
-
-export const {addreceipe,removereceipe,addpayment,addpayments}=Slice.actions
-export default Slice.reducer
+export default Slice.reducer;
