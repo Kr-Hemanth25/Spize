@@ -35,6 +35,9 @@ Spize is a modern food delivery application built with Next.js, React, and other
 
 ## Usage
 
+##Live Demo
+-https://krspize.vercel.app/
+
 ### Authentication
 
 - **JWT Authentication**: Users can sign up and log in using their email and password. A JWT token will be generated for authenticated sessions.
