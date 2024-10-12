@@ -1,3 +1,4 @@
+"use client"
 export const fetchrestaurant = async (latitude, longitude) => {
   try {
     const response = await fetch(`https://food-wagon-backend.onrender.com/api/restaurants?lat=${latitude}&lng=${longitude}`);
@@ -89,8 +90,5 @@ export const FetchRestaurantMenuDetail = async({recievedData}) => {
           }
         })
         }
-      
-
-// export default fetchrestaurant;
 
 

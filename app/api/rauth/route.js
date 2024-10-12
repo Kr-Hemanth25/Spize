@@ -4,7 +4,7 @@ export async function GET(request) {
     try{
     const token=request.cookies.get('token')
     if(!token)
-    return NextResponse.json({status:500,isuser:false})
+    return NextResponse.json({status:500,isuser:false,token:token})
     console.log("from here",token)
     const user=VerifyToken(token.value)
     if(user)
@@ -16,7 +16,7 @@ export async function GET(request) {
 
     catch(e){
         console.log("error while autentication",e.message)
-    return NextResponse.json({status:500,isuser:false,mission:"unsuccesfull"})
+    return NextResponse.json({status:500,isuser:false,mission:e.message})
 
     }
 

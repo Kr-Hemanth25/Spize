@@ -15,13 +15,15 @@ const Restaurant = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  useState(()=>{
-    const rds=localStorage.getItem('receipesdata')
-    const rd=rds?JSON.parse(rds):[]
-    localStorage.setItem('no', JSON.stringify(rd.length || 0));
-    localStorage.setItem('receipesdata', JSON.stringify(JSON.parse(localStorage.getItem('receipesdata')) || []));
-
-  },[])
+  useEffect(() => {
+    if (typeof window !== 'undefined') { // Check if window is available (client-side)
+      const rds = localStorage.getItem('receipesdata');
+      const rd = rds ? JSON.parse(rds) : [];
+      localStorage.setItem('no', JSON.stringify(rd.length || 0));
+      localStorage.setItem('receipesdata', JSON.stringify(rd || []));
+    }
+  }, []);
+  
 
   useEffect(() => {
     const fetchData = async () => {

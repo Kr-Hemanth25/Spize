@@ -9,7 +9,7 @@ import { name } from 'auth-provider/auth-providers/github';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const Navbar = () => {
+const Navbar2 = (isUser,user) => {
   const { data: session } = useSession();
   const [click, setClick] = useState(false);
   const [width, setWidth] = useState(0);
@@ -18,20 +18,11 @@ const Navbar = () => {
   const router = useRouter()
 
   useEffect(()=>{
-    async function fetchdata(){
-    let response=await fetch('/api/rauth')
-    let result= await response.json()
-    console.log(result)
-    if(result.isuser)
-    {
-      console.log(result.isuser)
-      setMlogin(result.user)
+    // console.log(isUser)
+    if(isUser.isUser){
+      setMlogin(isUser.user)
     }
-    }
-    fetchdata()
-
-
-  },[])
+  },[setMlogin])
 
   useEffect(() => {
     // console.log(mlogin)
@@ -214,7 +205,7 @@ if (session || mlogin.isuser) {
 
 };
 
-export default Navbar;
+export default Navbar2;
 
 
 

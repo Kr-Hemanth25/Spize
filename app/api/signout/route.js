@@ -24,7 +24,7 @@ export async function GET(request) {
 
   } catch (error) {
     console.error('Error deleting cookie:', error);
-    // return NextResponse.json({ message: 'Error deleting token', status: 500,user:false });
+    return NextResponse.json({ message: 'Error deleting token', status: 500,user:false });
   }
 
 

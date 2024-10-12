@@ -2,8 +2,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SessionWrapper from "./components/SessionWrapper"
-import Navbar from "./components/navbar.js"
-import Footer from "./components/footer.js"
+import Navbar from "./components/navbar.jsx"
+import Footer from "./components/footer.jsx"
 // import Wrapper from "./components/Wrapper";
 import { Providers } from "./redux/providers";
 import { LoginProvider } from "./components/LoginContext";

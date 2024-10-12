@@ -2,7 +2,7 @@
 // "use client"
 import React from 'react';
 // import { useState } from 'react';
-import Payments from '@/app/components2/payments';
+// import Payments from '@/app/components2/payments';
 import Mainpayment from '@/app/components2/mainpayment';
 
 export default function Page() {
